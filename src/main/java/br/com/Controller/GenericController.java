@@ -27,6 +27,10 @@ public abstract class GenericController<Model> implements IController{
 		return dao.findAll(imodel);
 	}
 	
+	public List<IModel<?>> buscarForeign(IModel<?> imodel, IModel<?> imodel1) {
+		return dao.findIdForeigh(imodel, imodel1);
+	}
+	
 	public List<IModel<?>> listarCriterio(IModel<?> entidade, String parametro, boolean ativo) {
 		return dao.findCriterio(entidade, parametro, ativo);
 	}
@@ -35,8 +39,7 @@ public abstract class GenericController<Model> implements IController{
 		Retorno ret = validar(imodel);
 		
 		if(ret.isValid()){
-			ret = dao.save(imodel);
-			
+			ret = dao.save(imodel);	
 		}
 		return ret;
 	}
@@ -46,7 +49,6 @@ public abstract class GenericController<Model> implements IController{
 		
 		if(ret.isValid()){
 			ret = dao.alterar(imodel);
-			
 		}
 		return ret;
 	}

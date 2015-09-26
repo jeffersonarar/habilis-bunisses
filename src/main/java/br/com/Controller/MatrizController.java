@@ -1,5 +1,6 @@
 package br.com.Controller;
 
+import br.com.core.Enum.TipoMensagem;
 import br.com.core.Interface.IModel;
 import br.com.core.Model.Matriz;
 import br.com.core.Util.Retorno;
@@ -18,6 +19,13 @@ public class MatrizController extends GenericController<Matriz> {
 		if(getMatriz().getQtd_periodo() == 0){
 			lstMensagens.add("Número de periodos deve ser maior que zero!");
 		} 
+		if(!lstMensagens.isEmpty()){
+			String novamsg = lstMensagens.toString().replaceAll(",", "\n");
+			String msg = novamsg.replace("[", " ").replace("]", " ");
+			ret = new Retorno(false, msg, TipoMensagem.AVISO);
+		}else{
+			ret = new Retorno(true);
+		}
 		return ret;
 	}
 
