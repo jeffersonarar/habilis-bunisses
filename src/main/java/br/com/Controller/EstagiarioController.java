@@ -61,10 +61,9 @@ public class EstagiarioController extends GenericController<Estagiario>{
 	}
 	
 	
-	public Retorno validarLogin(IModel<?> entidade, int cpf, String senha){
-		Retorno ret;
+	public IModel<?> validarLogin(IModel<?> entidade, String cpf, String senha){
 		setEstagiario((Estagiario) entidade);
-		return ret = dao.buscarUsuario(estagiario, cpf, senha);
+		return dao.buscarUsuario(estagiario, cpf, senha);
 	}
 
 	public Estagiario getEstagiario() {
