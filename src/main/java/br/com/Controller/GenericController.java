@@ -39,6 +39,10 @@ public abstract class GenericController<Model> implements IController{
 		return dao.findCriterioEqual(entidade, parametro, ativo);
 	}
 	
+	public List<IModel<?>> findCriterioEstagiario(IModel<?> entidade, String parametro, boolean ativo) {
+		return dao.findCriterioEstagiario(entidade, parametro, ativo);
+	}
+	
 	public Retorno salvar(IModel<?> imodel) {
 		Retorno ret = validar(imodel);
 		
