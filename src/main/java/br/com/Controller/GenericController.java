@@ -47,6 +47,16 @@ public abstract class GenericController<Model> implements IController{
 		return dao.buscarPorId(entidade, id);
 	}
 	
+    public IModel<?> buscarUsuarioConfiguracao(IModel<?> entidade, String nome,
+			String senha){
+    	return dao.buscarUsuarioConfiguracao(entidade, nome, senha);
+    }
+	
+    
+    public List<IModel<?>> criadordeSql(String sql, IModel<?> entidade) {
+    	return dao.criadordeSql(sql, entidade);
+    }
+	
 	public Retorno salvar(IModel<?> imodel) {
 		Retorno ret = validar(imodel);
 		
