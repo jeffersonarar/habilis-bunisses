@@ -30,6 +30,8 @@ public class ContratoEstagioController extends GenericController<ContratoEstagio
 			lstMensagens.add("Campo data fim é o obrigatório!");
 		}else if(getContrato().getEmail_supervisor() == null || getContrato().getEmail_supervisor().equals("")){
 			lstMensagens.add("Campo email é o obrigatório!");
+		}else if(getContrato().getData_inicio().after(getContrato().getData_fim())){
+			lstMensagens.add("Data inicial inválida!");
 		}
 	
 		if(!lstMensagens.isEmpty()){

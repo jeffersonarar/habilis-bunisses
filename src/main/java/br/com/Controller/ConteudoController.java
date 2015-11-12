@@ -13,7 +13,10 @@ public class ConteudoController extends GenericController<Conteudo> {
 	protected Retorno validar(IModel imodel) {
 		setConteudo((Conteudo) imodel);
 		Retorno ret = new Retorno(true);
-
+		
+		if (validarNome(conteudo, getConteudo().getNome()).size() > 0) {
+			lstMensagens.add("Nome já existente!");
+		}
 		if (getConteudo().getNome() == null
 				|| getConteudo().getNome().equals("")) {
 			lstMensagens.add("Campo nome é obrigatório!");
@@ -22,11 +25,11 @@ public class ConteudoController extends GenericController<Conteudo> {
 			lstMensagens.add("Campo disciplina é obrigatório!");
 		}
 
-		if(!lstMensagens.isEmpty()){
+		if (!lstMensagens.isEmpty()) {
 			String novamsg = lstMensagens.toString().replaceAll(",", "\n");
 			String msg = novamsg.replace("[", " ").replace("]", " ");
 			ret = new Retorno(false, msg, TipoMensagem.AVISO);
-		}else{
+		} else {
 			ret = new Retorno(true);
 		}
 		return ret;

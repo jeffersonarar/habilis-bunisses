@@ -13,6 +13,9 @@ public class AtividadeController extends GenericController<Atividade>{
 	protected Retorno validar(IModel imodel) {
 		setAtividade((Atividade) imodel);
 		Retorno ret = new Retorno();
+		if(validarNome(atividade, getAtividade().getNome()).size() > 0){
+			lstMensagens.add("Nome já existente!");
+		}
 		if(getAtividade().getCategoria() == null){
 			lstMensagens.add("Campo categoria é obrigatório!");
 		}

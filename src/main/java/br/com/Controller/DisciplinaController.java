@@ -14,7 +14,9 @@ public class DisciplinaController extends GenericController<Disciplina> {
 	protected Retorno validar(IModel<?> imodel) {
 		setDisciplina((Disciplina) imodel);
 		Retorno ret = new Retorno();
-		
+		if(validarNome(disciplina, getDisciplina().getNome()).size() > 0){
+			lstMensagens.add("Nome já existente!");
+		}
 		if(getDisciplina().getMatriz() == null){
 			lstMensagens.add("Campo matriz é o obrigatório!");
 		}

@@ -16,9 +16,12 @@ public class CategoriaController extends GenericController<Categoria> {
 	protected Retorno validar(IModel<?> imodel) {
 		setCategoria((Categoria) imodel);
 		Retorno ret = new Retorno(true);
+		if(validarNome(categoria, getCategoria().getNome()).size() > 0){
+			lstMensagens.add("Nome já existente!");
+		}else
 		if(getCategoria().getNome() == null || getCategoria().getNome().equals("")){
 			lstMensagens.add("Campo nome é obrigatório!");
-		} 
+		}else 
 		if(!lstMensagens.isEmpty()){
 			String novamsg = lstMensagens.toString().replaceAll(",", "\n");
 			String msg = novamsg.replace("[", " ").replace("]", " ");

@@ -8,6 +8,7 @@ import br.com.Util.Validacao;
 import br.com.core.DAO.MsrDAO;
 import br.com.core.Interface.IModel;
 import br.com.core.Model.Empresa;
+import br.com.core.Model.Estagiario;
 import br.com.core.Util.Mensagem;
 import br.com.core.Util.Retorno;
 
@@ -77,6 +78,10 @@ public abstract class GenericController<Model> implements IController{
 
 	public Retorno ativar(IModel<?> imodel) {
 		return dao.ativar(imodel);
+	}
+	
+	public List<IModel<?>> validarNome(IModel<?> entidade, String parametro){
+		return dao.findCriterioEqual(entidade, parametro, true);
 	}
 	
 }
